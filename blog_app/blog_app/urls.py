@@ -18,9 +18,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from blog.views import hello_world as hello_world_view
+from auth.views import (login_user,logout_user,register_user)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("",hello_world_view,name="hello world"),
+    path("blog/login/",login_user,name="login"),
+    path("blog/logout/",logout_user,name="logout"),
+    path("blog/register/",register_user,name="register"),
+    path("",hello_world_view,name="home"),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
