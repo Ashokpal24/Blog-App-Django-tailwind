@@ -32,7 +32,7 @@ class Command(BaseCommand):
         with open('/workspaces/codespaces-blank/blog_app/blog/management/dummy_data.json','r') as f:
             json_data=json.load(f)
 
-        image_path="/workspaces/codespaces-blank/blog_app/static/Images/"
+        image_path="/workspaces/codespaces-blank/blog_app/static/images_temp/"
         tag_list=['Technology', 'Science', 'Health', 'Education', 'Art']
         image_obj={}
 
@@ -67,7 +67,7 @@ class Command(BaseCommand):
             file_name=blog_data['title'].replace(" ","_")
             file_name+="."+image_obj[file_name]
 
-            user_image_folder='images/blog_featured/user_{0}/'.format(blog_data["author"])
+            user_image_folder='static/images/blog_featured/user_{0}/'.format(blog_data["author"])
 
             # if generated path and content in it does not exists
             if os.path.exists(user_image_folder+file_name)==False:

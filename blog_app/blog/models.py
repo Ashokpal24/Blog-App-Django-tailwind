@@ -3,7 +3,7 @@ from tag.models import Tag
 from author.models import Author
 
 def user_directory_path(instance,filename):
-    return f'images/blog_featured/user_{0}/{1}'.format(instance.author.user.username,filename)
+    return f'static/images/blog_featured/user_{0}/{1}'.format(instance.author.user.username,filename)
 
 class Blog(models.Model):
     title=models.CharField(blank=False,max_length=255)
@@ -18,4 +18,4 @@ class Blog(models.Model):
     #slug
 
     def __str__(self) -> str:
-        return f"{0} by {1}".format_map(self.title,self.author.user.username)
+        return "{} by {}".format(self.title,self.author.user.username)

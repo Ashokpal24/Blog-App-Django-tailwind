@@ -12,7 +12,43 @@
   </head>
 
   <body class="font-mono flex flex-col items-center justify-center">
+    <nav
+      class="shadow mb-2 w-full p-2 flex flex-row justify-between items-center"
+    >
+      <span class="ml-2 w-[162px] font-bold p-2 text-2xl">Logo</span>
+
+      {% if user.is_authenticated%}
+      <div class="flex flex-row justify-center items-center w-4/6">
+        <a
+          class="text-blue-500 text-xl cursor-pointer font-normal hover:text-indigo-500 hover:font-semibold"
+        >
+          Home
+        </a>
+        <a
+          class="ml-12 text-blue-500 text-xl cursor-pointer font-normal hover:text-indigo-500 hover:font-semibold"
+        >
+          about
+        </a>
+      </div>
+      <form class="mr-2" action="{% url 'logout' %}" method="POST">
+        {% csrf_token %}
+        <button
+          class="w-40 rounded-md p-2 transition ease-in-out bg-rose-500 border-2 border-gray-100 hover:bg-rose-600 hover:text-white hover:border-black"
+          type="submit"
+        >
+          Logout
+        </button>
+      </form>
+      {% else %}
+      <span>Logged Out!</span>
+      {% endif %}
+    </nav>
     {% block content %} {% endblock %}
+    <footer
+      class="bg-gray-400 w-full h-24 p-2 flex flex-row justify-center items-center text-2xl"
+    >
+      Footer
+    </footer>
   </body>
   <script src="{% static 'main.js' %}"></script>
 </html>
