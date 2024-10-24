@@ -18,6 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from blog.views import home as home_view
+from blog.views import blog_by_id as blog_by_id_view
 from auth.views import (login_user,logout_user,register_user)
 
 urlpatterns = [
@@ -26,5 +27,6 @@ urlpatterns = [
     path("blog/logout/",logout_user,name="logout"),
     path("blog/register/",register_user,name="register"),
     path("",home_view,name="home"),
+    path("blog/detail/<int:id>",blog_by_id_view,name="blog_details"),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
